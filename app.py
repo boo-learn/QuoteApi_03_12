@@ -11,6 +11,9 @@ api.add_resource(QuoteResource,
 api.add_resource(AuthorResource,
                  '/authors/<int:author_id>',
                  '/authors')  # <-- requests
+api.add_resource(UserResource,
+                 '/users/<int:user_id>',
+                 '/users')  # <-- requests
 
 if __name__ == '__main__':
     app.run(debug=Config.DEBUG, port=Config.PORT)
