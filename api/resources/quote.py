@@ -1,4 +1,4 @@
-from api import Resource, reqparse, db, auth
+from api import Resource, reqparse, db, auth, g
 from api.models.author import AuthorModel
 from api.models.quote import QuoteModel
 from api.schemas.quote import quote_schema, quotes_schema
@@ -27,6 +27,8 @@ class QuoteResource(Resource):
 
     @auth.login_required
     def post(self, author_id):
+        curent_user = g.user
+        print("auth user name = ", curent_user.username)
         parser = reqparse.RequestParser()
         parser.add_argument("text", required=True)
         quote_data = parser.parse_args()
